@@ -1,19 +1,29 @@
-const postsLoaded = (posts) => {
+import axios from "axios";
+
+export const searchPosts = (search) => {
     return {
-        type: "FETCH_POSTS_SUCCESS",
-        payload: posts,
+        type: "SEARCH_POST",
+        payload: search,
     };
 };
 
-const postsRequested = () => {
-    return {
-        type: "FETCH_POSTS_REQUEST",
-    };
-};
+export const fetchPosts = () => {
+    return async (dispatch) => {
+        try {
+            dispatch({ type: "FETCH_POSTS_REQUEST" });
+            const response = await axios.get(
+                "https://jsonplaceholder.typicode.com/posts"
+            );
 
-const postsError = (error) => {
-    return {
-        type: "FETCH_POSTS_FAILURE",
-        payload: error,
+            await dispatch({
+                type: "FETCH_POSTS_SUCCESS",
+                payload: response.data,
+            });
+        } catch (e) {
+            dispatch({
+                type: "FETCH_POSTS_FAILURE",
+                payload: e,
+            });
+        }
     };
 };

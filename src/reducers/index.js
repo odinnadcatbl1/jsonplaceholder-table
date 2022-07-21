@@ -3,6 +3,7 @@ const initialState = [
         posts: [],
         loading: true,
         error: null,
+        search: "",
     },
 ];
 
@@ -13,6 +14,7 @@ const reducer = (state = initialState, action) => {
                 posts: action.payload,
                 loading: false,
                 error: null,
+                search: "",
             };
 
         case "FETCH_POSTS_REQUEST":
@@ -20,13 +22,21 @@ const reducer = (state = initialState, action) => {
                 posts: [],
                 loading: true,
                 error: null,
+                search: "",
             };
 
-        case "FETCH_BOOKS_FAILURE":
+        case "FETCH_POSTS_FAILURE":
             return {
                 books: [],
                 loading: false,
                 error: action.payload,
+                search: "",
+            };
+
+        case "SEARCH_POST":
+            return {
+                ...state,
+                search: action.payload,
             };
 
         default:

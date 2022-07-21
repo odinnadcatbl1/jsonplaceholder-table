@@ -1,0 +1,45 @@
+.table__container {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table__head {
+    background-color: #474955;
+    box-shadow: 0 4px 27px rgba(230, 231, 234, 0.78);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.table__head th {
+    padding: 16px;
+}
+
+.table__head th img {
+    margin-left: 20px;
+}
+
+.table__body {
+    font-size: 13px;
+    font-weight: 500;
+    color: #474955;
+}
+
+.table__body td {
+    border: 1px solid #e3e6ec;
+    padding: 15px 10px;
+    text-align: center;
+}
+
+.table__body td:first-child {
+    width: 110px;
+}
+
+.table__body td:nth-child(2) {
+    width: 530px;
+}
