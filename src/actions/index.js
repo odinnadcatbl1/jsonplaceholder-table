@@ -7,6 +7,13 @@ export const searchPosts = (search) => {
     };
 };
 
+export const sortPosts = (sort) => {
+    return {
+        type: "SORT_POST",
+        payload: sort,
+    };
+};
+
 export const fetchPosts = () => {
     return async (dispatch) => {
         try {

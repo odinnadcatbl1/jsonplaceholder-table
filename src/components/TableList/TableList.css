@@ -18,6 +18,7 @@
 
 .table__head th {
     padding: 16px;
+    cursor: pointer;
 }
 
 .table__head th img {
