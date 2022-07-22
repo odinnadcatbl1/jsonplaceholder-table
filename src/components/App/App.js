@@ -12,7 +12,7 @@ const App = () => {
                 <SearchForm />
                 <Router>
                     <Routes>
-                        <Route path="/" element={<TableList />} />
+                        <Route path="/:id" element={<TableList />} />
                     </Routes>
                     <Pagination />
                 </Router>

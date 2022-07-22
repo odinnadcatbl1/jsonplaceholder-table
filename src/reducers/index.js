@@ -5,6 +5,10 @@ const initialState = [
         error: null,
         search: "",
         sort: "id",
+        pagination: {
+            pages: 0,
+            currentPage: 1,
+        },
     },
 ];
 
@@ -16,6 +20,10 @@ const reducer = (state = initialState, action) => {
                 posts: action.payload,
                 loading: false,
                 search: "",
+                pagination: {
+                    pages: action.payload.length,
+                    currentPage: 1,
+                },
             };
 
         case "FETCH_POSTS_REQUEST":
@@ -43,6 +51,22 @@ const reducer = (state = initialState, action) => {
                 sort: action.payload,
             };
 
+        case "SET_PAGES_COUNT":
+            return {
+                ...state,
+                pagination: {
+                    ...state.pagination,
+                    pages: action.payload,
+                },
+            };
+        case "SET_CURRENT_PAGE":
+            return {
+                ...state,
+                pagination: {
+                    ...state.pagination,
+                    currentPage: action.payload,
+                },
+            };
         default:
             return state;
     }

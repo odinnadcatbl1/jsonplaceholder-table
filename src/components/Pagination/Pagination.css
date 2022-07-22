@@ -29,10 +29,15 @@
     font-weight: 700;
     font-style: italic;
     line-height: 1.3;
+    transition: text-decoration 0.2s ease;
 }
 
 .pagination__item:not(:first-child) {
     margin-left: 10px;
+}
+
+.pagination__item:hover {
+    text-decoration: underline;
 }
 
 .pagination__item a {

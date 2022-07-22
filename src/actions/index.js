@@ -14,6 +14,20 @@ export const sortPosts = (sort) => {
     };
 };
 
+export const setPagesCount = (count) => {
+    return {
+        type: "SET_PAGES_COUNT",
+        payload: +count,
+    };
+};
+
+export const setCurrentPage = (page) => {
+    return {
+        type: "SET_CURRENT_PAGE",
+        payload: +page,
+    };
+};
+
 export const fetchPosts = () => {
     return async (dispatch) => {
         try {

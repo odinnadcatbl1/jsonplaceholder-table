@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TableItem from "../TableItem/TableItem";
-import { fetchPosts, sortPosts } from "../../actions";
+import { fetchPosts, setPagesCount, sortPosts } from "../../actions";
 
 import arrowIcon from "../../assets/arrow-down.svg";
 import "./TableList.css";
 
 const TableList = () => {
-    const { posts, loading, error, search, sort } = useSelector(
+    const { posts, loading, error, search, sort, pagination } = useSelector(
         (state) => state
     );
     const dispatch = useDispatch();
@@ -26,8 +26,8 @@ const TableList = () => {
         return <h1>Ошибка загрузки</h1>;
     }
 
-    if (!posts) {
-        return <h1>Идёт загрузка</h1>;
+    if (!posts | !pagination) {
+        return <h1>Идёт загрузка...</h1>;
     }
 
     const byField = (field, flag) => {
@@ -36,6 +36,9 @@ const TableList = () => {
         }
         return (a, b) => (a[field] > b[field] ? 1 : -1);
     };
+
+    const indexOfLastPost = pagination.currentPage * 10;
+    const indexOfFirstPost = indexOfLastPost - 10;
 
     const filteredPosts = posts
         .filter((post) => {
@@ -54,7 +57,8 @@ const TableList = () => {
                 }
             }
         })
-        .sort(byField(sort, flag));
+        .sort(byField(sort, flag))
+        .slice(indexOfFirstPost, indexOfLastPost);
 
     if (filteredPosts.length === 0) {
         return (
