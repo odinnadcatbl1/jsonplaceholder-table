@@ -30,6 +30,10 @@ const Pagination = () => {
         pageNumbers.push(i);
     }
 
+    if (pagination.pages <= 10) {
+        return false;
+    }
+
     return (
         <div className="pagination__container">
             <div className="pagination__button" onClick={onPrevPage}>
