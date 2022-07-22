@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchForm from "../SearchForm/SearchForm";
-import TableButtons from "../TableButtons/TableButtons";
+import Pagination from "../Pagination/Pagination";
 import TableList from "../TableList/TableList";
 
 import "./App.css";
@@ -14,7 +14,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<TableList />} />
                     </Routes>
-                    <TableButtons />
+                    <Pagination />
                 </Router>
             </div>
         </div>
